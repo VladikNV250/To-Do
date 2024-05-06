@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Sidebar() {
 
   return (
-    <aside className="fixed w-[300px] h-full bg-gray-100 px-1 pt-2 z-20">
+    <aside className="relative w-[300px] h-full min-h-screen bg-gray-100 px-1 pt-2 z-20">
         <section className="flex items-center space-x-4 mb-2 px-3">
             <div className="relative size-12 rounded-full bg-sky-600 grid place-content-center">
                 {/* <Image 
@@ -44,7 +44,7 @@ export default function Sidebar() {
                 </div>
             </div>
         </section>
-        <ul className="px-3 space-y-4">
+        <ul>
             {[
             {title: "My Day",         icon: {name: "sun",    color: "text-gray-700"},  href: "/my-day",         counter: "0"},
             {title: "Important",      icon: {name: "star",   color: "text-red-700"},   href: "/important",      counter: "0"},
@@ -52,8 +52,8 @@ export default function Sidebar() {
             {title: "Assigned to me", icon: {name: "person", color: "text-green-500"}, href: "/asiggned-to-me", counter: "0"},
             {title: "Tasks",          icon: {name: "house",  color: "text-blue-700"},  href: "/tasks",          counter: "0"},
             ].map((item, key) => (
-            <li key={key}>
-                <Link href={item.href} className="flex-between">
+            <li key={key} className="py-2.5 px-3 hover:bg-gray-200">
+                <Link href={item.href} className="flex-between cursor-default">
                     <div className="flex items-start space-x-4">
                         <Icon icon={item.icon.name} size="18" className={item.icon.color} />
                         <p className="text-sm">{item.title}</p> 
@@ -69,13 +69,13 @@ export default function Sidebar() {
             </li>
             ))}
         </ul>
-        <div className="w-full h-px bg-gray-200 my-4"></div> {/* divider */}
-        <ul className="px-3 space-y-4">
+        <div className="w-full h-px bg-gray-200 my-2"></div> {/* divider */}
+        <ul>
             {ListsAndGroups.map((item, key) => (
             <>
             {item.type === "list" ?
-            <li key={key}>
-                <Link href={""} className="flex-between">
+            <li key={key} className="py-2.5 px-3 hover:bg-gray-200">
+                <Link href={""} className="flex-between cursor-default">
                     <div className="flex items-start space-x-4">
                         <Icon icon="list" size="18" className={item.color + " scale-x-125"} />
                         <p className="text-sm">{item.title}</p> 
@@ -90,49 +90,59 @@ export default function Sidebar() {
                 </Link>
             </li>
             :item.type === "group" ?
-            <li key={key}>
-                <section className="space-y-4">
-                    <div className="flex-between">
-                        <div className="flex items-start space-x-4">
-                            <Icon icon="group" size="18" className={item.color} />
-                            <p className="text-sm">{item.title}</p>
-                        </div>
-                        <Icon icon="chevron-down" size="14" />
+            <li key={key} className="space-y-1 mb-1">
+                <div className="flex-between py-2.5 px-3 hover:bg-gray-200">
+                    <div className="flex items-start space-x-4 cursor-default">
+                        <Icon icon="group" size="18" className={item.color} />
+                        <p className="text-sm">{item.title}</p>
                     </div>
-                    <ul className="space-y-4 pl-8">
-                        {item.lists?.map((list, key) => (
-                        <li key={key}>
-                            <Link href={""} className="flex-between">
-                                <div className="flex items-center space-x-4">
-                                    <Icon icon="list" size="18" className={list.color + " scale-x-125"} />
-                                    <p className="text-sm">{list.title}</p> 
-                                </div>
-                                <div className={clsx(
-                                    "size-4 bg-gray-300 text-[11px]/none rounded-full ", 
-                                    list.tasks.length === 0 && "hidden",
-                                    list.tasks.length !== 0 && "flex-center",
-                                )}> 
-                                    {list.tasks.length}
-                                </div> 
-                            </Link>
-                        </li>
-                        ))}
-                    </ul>
-                </section>
+                    <Icon icon="chevron-down" size="14" />
+                </div>
+                <ul>
+                    { 
+                    item.lists ?
+                    item.lists.map((list, key) => (
+                    <li key={key} className="py-2.5 pl-11 pr-3 hover:bg-gray-200">
+                        <Link href={""} className="flex-between cursor-default">
+                            <div className="flex items-center space-x-4">
+                                <Icon icon="list" size="18" className={list.color + " scale-x-125"} />
+                                <p className="text-sm">{list.title}</p> 
+                            </div>
+                            <div className={clsx(
+                                "size-4 bg-gray-300 text-[11px]/none rounded-full ", 
+                                list.tasks.length === 0 && "hidden",
+                                list.tasks.length !== 0 && "flex-center",
+                            )}> 
+                                {list.tasks.length}
+                            </div> 
+                        </Link>
+                    </li>
+                    ))
+                    : 
+                    <li className="py-2.5 pl-[3.75rem] pr-3 hover:bg-gray-200">
+                        <p className={`
+                            relative text-sm text-gray-600 cursor-default
+                            before:h-[20px] before:w-0.5 before:bg-gray-600 before:absolute before:top-0 before:-left-4`
+                        }>
+                            Drag here to add lists
+                        </p>
+                    </li>
+                    }
+                </ul>
             </li>
             : null
             }
             </>
             ))}
         </ul>
-        <section className="absolute bottom-2 left-0 w-full flex-between px-4">
-            <Link href={""} className="flex items-start space-x-4">
+        <section className="absolute bottom-0 left-0 w-full h-10 flex-between">
+            <Link href={""} className="h-full flex items-center space-x-4 pl-2 flex-1 cursor-default hover:bg-gray-200 ">
                 <Icon icon="plus-lg" size="18"/>
                 <p className="text-sm">New list</p>
             </Link>
-            <button className="relative">
-                <Icon icon="plus" size="14" className="absolute top-[3px] left-1/2 -translate-x-1/2"/>
-                <Icon icon="group" size="18" className=""/>
+            <button className="grid place-items-center h-full w-10 cursor-default hover:bg-gray-200">
+                <Icon icon="plus" size="14" className="grid-center mt-px"/>
+                <Icon icon="group" size="18" className="grid-center"/>
             </button>
         </section>
     </aside>
