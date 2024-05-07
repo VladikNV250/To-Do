@@ -105,12 +105,24 @@ export default function Icon({icon, size = "16", className = ""}: Props) {
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"bi bi-trash3 " +  className} viewBox="0 0 16 16">
         <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
       </svg>
+    : icon === "files" ?
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"bi bi-files " + className} viewBox="0 0 16 16">
+        <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1M3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+      </svg>
     : icon === "arrow-up" ?
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"bi bi-arrow-up " + className} viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
       </svg>
     : icon === "arrow-down" ?
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"bi bi-arrow-down " + className} viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+      </svg>
+    : icon === "arrow-left" ?
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"rotate-90 bi bi-arrow-down " + className} viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+      </svg>
+    : icon === "arrow-right" ?
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"-rotate-90 bi bi-arrow-down " + className} viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
       </svg>
     : icon === "arrow-down-up" ?
@@ -172,6 +184,52 @@ export default function Icon({icon, size = "16", className = ""}: Props) {
       <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"bi bi-bell " + className} viewBox="0 0 16 16">
         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
       </svg>
+      // DOUBLE SEMIGROUP -- group, which consist of 2 icons at once
+    : icon === "double arrow-left-group" ? 
+      <div className='grid place-items-center'>
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"grid-center bi bi-collection " +  className} viewBox="0 0 16 16">
+          <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"/>
+        </svg>                                        {/* 67% of size. Example: 67% of 18 is 12 */}
+        <svg xmlns="http://www.w3.org/2000/svg" width={`${Math.round((~~size * 67) / 100)}`} height={`${Math.round((~~size * 67) / 100)}`} fill="currentColor" className={"grid-center mt-px rotate-90 bi bi-arrow-down " + className} viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+        </svg>
+      </div>
+    : icon === "double arrow-right-group" ?
+      <div className='grid place-items-center'>
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"grid-center bi bi-collection " +  className} viewBox="0 0 16 16">
+          <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"/>
+        </svg>                                        {/* 67% of size. Example: 67% of 18 is 12 */}
+        <svg xmlns="http://www.w3.org/2000/svg" width={`${Math.round((~~size * 67) / 100)}`} height={`${Math.round((~~size * 67) / 100)}`} fill="currentColor" className={"grid-center mt-px -rotate-90 bi bi-arrow-down " + className} viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+        </svg>
+      </div>
+    : icon === "double arrow-up-group" ?
+      <div className='grid place-items-center'>
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"grid-center bi bi-collection " +  className} viewBox="0 0 16 16">
+          <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"/>
+        </svg>                                        {/* 55% of size. Example: 55% of 18 is 10 */}
+        <svg xmlns="http://www.w3.org/2000/svg" width={`${Math.round((~~size * 55) / 100)}`} height={`${Math.round((~~size * 55) / 100)}`} fill="currentColor" className={"grid-center mt-1 bi bi-arrow-up " + className} viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+        </svg>
+      </div>
+    : icon === "double arrow-down-group" ?
+      <div className='grid place-items-center'>
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"grid-center bi bi-collection " +  className} viewBox="0 0 16 16">
+          <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"/>
+        </svg>                                        {/* 55% of size. Example: 55% of 18 is 10 */}
+        <svg xmlns="http://www.w3.org/2000/svg" width={`${Math.round((~~size * 55) / 100)}`} height={`${Math.round((~~size * 55) / 100)}`} fill="currentColor" className={"grid-center mt-1 bi bi-arrow-down " + className} viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+        </svg>
+      </div>
+    : icon === "double calendar-arrow-right" ?
+      <div className='grid place-items-center'>
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" className={"grid-center bi bi-calendar " + className} viewBox="0 0 16 16">
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+        </svg>                                        {/* 67% of size. Example: 67% of 18 is 12 */}
+        <svg xmlns="http://www.w3.org/2000/svg" width={`${Math.round((~~size * 67) / 100)}`} height={`${Math.round((~~size * 67) / 100)}`} fill="currentColor" className={"grid-center mt-px -rotate-90 bi bi-arrow-down " + className} viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+        </svg>
+      </div>
     : null
     }
     </>

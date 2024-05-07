@@ -1,6 +1,7 @@
-import { ListsAndGroups } from "@/assets/data";
+import { ListsAndGroups, asideListMenu, groupMenu, taskMenu } from "@/assets/data";
 import Sidebar from "@/components/Sidebar";
 import DropdownMenu from "@/components/UI/DropdownMenu";
+import { listMenu } from "@/assets/data";
 import Icon from "@/components/UI/Icon";
 import clsx from "clsx";
 import Image from "next/image";
@@ -16,8 +17,11 @@ export default function Home() {
           <button className="size-7 flex-center rounded-md bg-transparent hover:bg-white/50">
             <Icon icon="dots" size="18" className="text-white" />
           </button>
-          <DropdownMenu />
+          <DropdownMenu menu={listMenu} />
         </section>
+        {/* <DropdownMenu menu={asideListMenu} /> */}
+        {/* <DropdownMenu menu={groupMenu} /> */}
+        {/* <DropdownMenu menu={taskMenu} /> */}
       </header>
       <section className="pt-20">
         <figure className="space-y-2">
