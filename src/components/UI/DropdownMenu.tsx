@@ -1,10 +1,19 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import Icon from "./Icon";
-import { MenuBtn, MenuThemes, NestedMenu } from "@/assets/data";
+import { Menu, MenuBtn, MenuThemes, NestedMenu } from "@/assets/data";
 import clsx from "clsx";
 
+type Props = {
+  readonly menu: Menu[],
+  readonly id: string,
+  readonly position: string, // ex. "top-32 left-32"
+  readonly isActive: boolean,
+}
 
-export default function DropdownMenu({menu}: {menu: (MenuBtn | NestedMenu | MenuThemes)[][]}) {
+type Edge = "top" | "right" | "bottom" | "left";  
+
+export default function DropdownMenu({menu, id, position = "top-0 left-0", isActive}: Props) {
   const Colors: {[key: string]: string} = 
   {
     blue: "bg-gradient-to-b from-blue-700 to-blue-500",
@@ -22,10 +31,10 @@ export default function DropdownMenu({menu}: {menu: (MenuBtn | NestedMenu | Menu
     cyan_inverted: "bg-cyan-100 border-2 border-cyan-700",
     gray_inverted: "bg-gray-100 border-2 border-gray-700",
   }
+  const [edge, setEdge] = useState<Edge>("left"); 
 
-  let direction = 'left';
 
-  function getDistanceFromEdge(element: HTMLElement, edge: 'top' | 'bottom' | 'left' | 'right'): number {
+  function getDistanceFromEdge(element: HTMLElement, edge: Edge): number {
     const rect = element.getBoundingClientRect();
     const viewportSize = {
         width: window.innerWidth || document.documentElement.clientWidth,
@@ -45,6 +54,15 @@ export default function DropdownMenu({menu}: {menu: (MenuBtn | NestedMenu | Menu
             throw new Error('Invalid edge specified.');
     }
   }
+
+  useEffect(() => {
+    const distanceFromEdge = getDistanceFromEdge(document.getElementById(id)!, "left"); // how far menu is from the edge of browser
+    console.log(distanceFromEdge);
+    if (distanceFromEdge > 256) setEdge("left"); // 256 - 16rem base width of the nested menu
+    else setEdge("right");
+    console.log(getDistanceFromEdge(document.getElementById(id)!, "right"))
+  }, [])
+
 
   // checks whether the option is first in its category(array) and not at the top of the menu
   function checkOption(option: MenuBtn | NestedMenu | MenuThemes, index: number): boolean {
@@ -83,7 +101,7 @@ export default function DropdownMenu({menu}: {menu: (MenuBtn | NestedMenu | Menu
           {/* "-left-64 | -right-64" because you need 100% of the width of the container itself, not its parent */}
           <nav className={clsx(
             "absolute top-0 w-64", 
-            direction === "left" && "-left-64", direction === "right" && "-right-64",
+            edge === "left" && "-left-64", edge === "right" && "-right-64",
             "bg-white rounded-md shadow-xl shadow-black/20",
             "overflow-hidden invisible group-hover:visible",
           )}> 
@@ -119,7 +137,12 @@ export default function DropdownMenu({menu}: {menu: (MenuBtn | NestedMenu | Menu
 
 
   return (
-    <nav className="absolute top-0 -left-96 w-72 bg-white *:text-gray-600 rounded-md shadow-xl shadow-black/20">
+    <nav id={id} className={clsx(
+      "absolute", position,
+      "w-72 bg-white rounded-md shadow-xl shadow-black/20",
+      "*:text-gray-600",
+      !isActive && "invisible",
+    )} onClick={() => console.log('tap!')}>
       {menu.map((arrayOption) => (
         <>
           {arrayOption.map((option, index) => (

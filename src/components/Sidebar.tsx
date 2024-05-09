@@ -1,14 +1,15 @@
-import { ListsAndGroups } from "@/assets/data";
+import { ListsAndGroups, asideListMenu } from "@/assets/data";
 import Icon from "@/components/UI/Icon";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import DropdownMenu from "./UI/DropdownMenu";
 
 export default function Sidebar() {
 
   return (
     <aside className="relative w-[300px] h-full min-h-screen bg-gray-100 px-1 pt-2 z-20">
-        <section className="flex items-center space-x-4 mb-2 px-3">
+        <section className="relative flex items-center space-x-4 mb-2 px-3">
             <div className="relative size-12 rounded-full bg-sky-600 grid place-content-center">
                 {/* <Image 
                     src={""} alt=""
@@ -70,6 +71,7 @@ export default function Sidebar() {
             ))}
         </ul>
         <div className="w-full h-px bg-gray-200 my-2"></div> {/* divider */}
+        {/* <DropdownMenu menu={asideListMenu} id="aside-list-menu" /> */}
         <ul>
             {ListsAndGroups.map((item, key) => (
             <>

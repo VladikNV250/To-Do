@@ -1,25 +1,38 @@
-import { ListsAndGroups, asideListMenu, groupMenu, taskMenu } from "@/assets/data";
+"use client"
 import Sidebar from "@/components/Sidebar";
 import DropdownMenu from "@/components/UI/DropdownMenu";
-import { listMenu } from "@/assets/data";
+import { listMenu, asideListMenu, groupMenu, taskMenu } from "@/assets/data";
 import Icon from "@/components/UI/Icon";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+  const [listMenuActive, setListMenuActive] = useState<boolean>(false);
+
+
+  function disactiveMenus() {
+    setListMenuActive(false);
+  }
 
   return (
-    <main className="min-h-screen flex-1 pt-10 px-[45px] bg-red-500" style={{transform: "translateZ(0)"}}>
+    <main 
+      className="min-h-screen flex-1 pt-10 px-[45px] bg-red-500" 
+      style={{transform: "translateZ(0)"}}
+      onClick={disactiveMenus}
+    >
       <header className="fixed top-0 left-0 w-full flex-between pt-10 px-[45px] pb-4 bg-red-500/50 backdrop-blur z-10" >
         <h1 className="text-3xl text-white font-medium">Math | NMT | Complited</h1>
-        <section className="relative">
-          <button className="size-7 flex-center rounded-md bg-transparent hover:bg-white/50">
+        <section className="relative" onClick={event => event.stopPropagation()}>
+          <button 
+            className="size-7 flex-center rounded-md bg-transparent hover:bg-white/50"
+            onClick={() => setListMenuActive(!listMenuActive)}
+          >
             <Icon icon="dots" size="18" className="text-white" />
           </button>
-          <DropdownMenu menu={listMenu} />
+          <DropdownMenu menu={listMenu} id="list-menu" position="top-full -left-[13.5rem]" isActive={listMenuActive} />
         </section>
-        {/* <DropdownMenu menu={asideListMenu} /> */}
         {/* <DropdownMenu menu={groupMenu} /> */}
         {/* <DropdownMenu menu={taskMenu} /> */}
       </header>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import TaskSidebar from "@/components/TaskSidebar";
 
 const roboto = Roboto({ 
   subsets: ["cyrillic-ext", "latin-ext"],
@@ -20,9 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className + " flex"}>
+      <body className={roboto.className + " flex overflow-x-hidden"}>
         <Sidebar />
         {children}
+        <TaskSidebar />
       </body>
     </html>
   );

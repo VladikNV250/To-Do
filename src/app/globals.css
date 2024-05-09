@@ -12,4 +12,6 @@
     before:absolute before:-top-[10%] before:-left-[10%]
     before:bg-transparent before:border-2 before:border-blue-700 
   }
+
+  .tside-section { @apply w-full border border-gray-200 bg-white } /* TaskSidebar <section> */
 }
