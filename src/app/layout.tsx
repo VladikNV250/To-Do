@@ -22,9 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className + " flex overflow-x-hidden"}>
-        <Sidebar />
         {children}
-        <TaskSidebar />
       </body>
     </html>
   );

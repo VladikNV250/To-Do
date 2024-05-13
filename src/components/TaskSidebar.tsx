@@ -64,7 +64,6 @@ export default function TaskSidebar() {
         </section>
         <section className='tside-section'>
             <TextareaAutosize minRows={2} placeholder='Add note' className='w-full min-h-full pt-3.5 pr-8 pb-6 pl-3 outline-none text-sm placeholder-gray-600 placeholder:text-[15px]'/>
-            {/* <textarea name="" id="" placeholder='Add note' className='w-full h-full pt-3.5 pr-8 pb-3 pl-3 outline-none placeholder:text-gray-600'></textarea> */}
         </section>
     </aside>
   )

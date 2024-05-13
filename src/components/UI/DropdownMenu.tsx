@@ -11,26 +11,27 @@ type Props = {
   readonly isActive: boolean,
 }
 
-type Edge = "top" | "right" | "bottom" | "left";  
+type Edge = "top" | "right" | "bottom" | "left";
+
+const Colors: {[key: string]: string[]} = 
+{ //                [0] - for text,    [1] - for bg,    [2] - for themes
+  blue:            ["text-blue-500",   "bg-blue-700",   "bg-gradient-to-b from-blue-700 to-blue-500"],
+  purple:          ["text-purple-500", "bg-purple-500", "bg-gradient-to-b from-purple-500 to-purple-300"],
+  red:             ["text-red-500",    "bg-red-700",    "bg-gradient-to-b from-red-700 to-red-500"],
+  orange:          ["text-orange-500", "bg-orange-700", "bg-gradient-to-b from-orange-700 to-orange-500"],
+  green:           ["text-green-500",  "bg-green-700",  "bg-gradient-to-b from-green-700 to-green-500"],
+  cyan:            ["text-cyan-700",   "bg-cyan-700",   "bg-gradient-to-b from-cyan-700 to-cyan-500"],
+  gray:            ["text-gray-600",   "bg-gray-700",   "bg-gradient-to-b from-gray-700 to-gray-500"],
+  blue_inverted:   ["text-blue-500",   "bg-blue-700",   "bg-blue-100 border-2 !border-blue-700"],
+  purple_inverted: ["text-purple-500", "bg-purple-700", "bg-purple-100 border-2 border-purple-700"],
+  red_inverted:    ["text-red-500",    "bg-red-700",    "bg-red-100 border-2 border-red-700"],
+  orange_inverted: ["text-orange-500", "bg-orange-700", "bg-orange-100 border-2 border-orange-700"],
+  green_inverted:  ["text-green-500",  "bg-green-700",  "bg-green-100 border-2 border-green-700"],
+  cyan_inverted:   ["text-cyan-500",   "bg-cyan-700",   "bg-cyan-100 border-2 border-cyan-700"],
+  gray_inverted:   ["text-gray-500",   "bg-gray-700",   "bg-gray-100 border-2 border-gray-700"],
+}
 
 export default function DropdownMenu({menu, id, position = "top-0 left-0", isActive}: Props) {
-  const Colors: {[key: string]: string} = 
-  {
-    blue: "bg-gradient-to-b from-blue-700 to-blue-500",
-    purple: "bg-gradient-to-b from-purple-500 to-purple-300",
-    red: "bg-gradient-to-b from-red-700 to-red-500",
-    orange: "bg-gradient-to-b from-orange-700 to-orange-500",
-    green: "bg-gradient-to-b from-green-700 to-green-500",
-    cyan: "bg-gradient-to-b from-cyan-700 to-cyan-500",
-    gray: " bg-gradient-to-b from-gray-700 to-gray-500",
-    blue_inverted: "bg-blue-100 border-2 !border-blue-700",
-    purple_inverted: "bg-purple-100 border-2 border-purple-700",
-    red_inverted: "bg-red-100 border-2 border-red-700",
-    orange_inverted: "bg-orange-100 border-2 border-orange-700",
-    green_inverted: "bg-green-100 border-2 border-green-700",
-    cyan_inverted: "bg-cyan-100 border-2 border-cyan-700",
-    gray_inverted: "bg-gray-100 border-2 border-gray-700",
-  }
   const [edge, setEdge] = useState<Edge>("left"); 
 
 
@@ -127,8 +128,8 @@ export default function DropdownMenu({menu, id, position = "top-0 left-0", isAct
       )}>
           <figcaption className="text-sm">Theme</figcaption>
           <ul className="w-full grid grid-cols-5 grid-rows gap-3.5">
-          {themes.colors?.map((color) => (
-              <li className={`w-full h-[40px] ${Colors[color]}`}></li>
+          {themes.colors?.map((color) => (    // [2] - theme color
+              <li className={`w-full h-[40px] ${Colors[color][2]}`}></li>
           ))}
           </ul>
       </figure>
